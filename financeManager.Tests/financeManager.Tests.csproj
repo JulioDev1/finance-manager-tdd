@@ -30,7 +30,7 @@
     <ProjectReference Include="..\Core.Domain\FinanceManager.Domain.csproj" />
     <ProjectReference Include="..\FinanceManager.Application\FinanceManager.Application.csproj" />
     <ProjectReference Include="..\FinanceManager.Infrastructure\FinanceManager.Infrastructure.csproj" />
-    <ProjectReference Include="..\financeManager\financeManager.API.csproj" />
+    <ProjectReference Include="..\financeManager\FinanceManager.API.csproj" />
   </ItemGroup>
 
   <ItemGroup>
