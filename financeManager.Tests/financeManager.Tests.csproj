@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Domain\FinanceManager.Domain.csproj" />
+    <ProjectReference Include="..\FinanceManager.API\FinanceManager.API.csproj" />
     <ProjectReference Include="..\FinanceManager.Application\FinanceManager.Application.csproj" />
     <ProjectReference Include="..\FinanceManager.Infrastructure\FinanceManager.Infrastructure.csproj" />
   </ItemGroup>
