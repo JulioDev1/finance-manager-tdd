@@ -49,5 +49,14 @@ namespace FinanceManager.Tests.Repositories
 
             Assert.True(isMatch);
         }
+        [Fact]
+        public void ShouldBeReturnFalseWhenFindEmailDatabase()
+        {
+            var falseEmail = "false@mail.com";
+
+            var isNotMatch = context.Users.Any(u => u.Email == falseEmail);
+
+            Assert.False(isNotMatch);
+        }
     };
 }
