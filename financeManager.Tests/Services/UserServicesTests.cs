@@ -43,5 +43,25 @@ namespace financeManager.Tests.Services
             repository.Verify(r => r.CreateUserToDatabase(InputUserRegister), Times.Never);
         }
 
+        [Fact]
+        public async Task ShouldBeReturnSucessWithUserData()
+        {
+            var InputUserRegisterSuccess = fixture.Create<User>();
+
+            repository.Setup(r => r.FindUserByEmail(InputUserRegisterSuccess.Email)).ReturnsAsync(false);
+
+            repository.Setup(r => r.CreateUserToDatabase(InputUserRegisterSuccess)).ReturnsAsync(InputUserRegisterSuccess);
+
+            var userService = new UserService(repository.Object);
+
+            var userServiceReturnSuccess = await userService.CreateUserService(InputUserRegisterSuccess);
+
+            Assert.Equal(userServiceReturnSuccess, InputUserRegisterSuccess);
+
+            repository.Verify(r => r.FindUserByEmail(InputUserRegisterSuccess.Email), Times.Once);
+
+            repository.Verify(r=> r.CreateUserToDatabase(InputUserRegisterSuccess), Times.Once);
+        }
+
     }
 }

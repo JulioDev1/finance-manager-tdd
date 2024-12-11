@@ -9,7 +9,7 @@ namespace FinanceManager.Infrastructure.Repositories
 {
     public interface IUserRepositories
     {
-        Task<User?> CreateUserToDatabase( User user);
+        Task<User?> CreateUserToDatabase(User user);
         Task<bool> FindUserByEmail(string email);
     }
 }
