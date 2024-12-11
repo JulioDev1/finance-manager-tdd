@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FinanceManager.Domain.Model;
 
-namespace FinanceManager.Infrastructure.Repositories
+namespace FinanceManager.Infrastructure.Repositories.@interface
 {
     public interface IUserRepositories
     {

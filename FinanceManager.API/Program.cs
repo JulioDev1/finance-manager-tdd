@@ -1,6 +1,10 @@
 
 
+using FinanceManager.Application.Services;
+using FinanceManager.Domain.Interfaces;
 using FinanceManager.Infrastructure.Database;
+using FinanceManager.Infrastructure.Repositories;
+using FinanceManager.Infrastructure.Repositories.@interface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("AppDbContext"));
 });
+builder.Services.AddScoped<IUserRepositories, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

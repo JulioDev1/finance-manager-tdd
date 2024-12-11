@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using FinanceManager.Application.Services;
 using FinanceManager.Domain.Model;
-using FinanceManager.Infrastructure.Repositories;
+using FinanceManager.Infrastructure.Repositories.@interface;
 using Moq;
 using System;
 using System.Collections.Generic;

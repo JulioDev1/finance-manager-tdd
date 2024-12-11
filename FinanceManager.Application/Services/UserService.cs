@@ -1,6 +1,6 @@
 ﻿using FinanceManager.Domain.Interfaces;
 using FinanceManager.Domain.Model;
-using FinanceManager.Infrastructure.Repositories;
+using FinanceManager.Infrastructure.Repositories.@interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +28,11 @@ namespace FinanceManager.Application.Services
             }
 
             return await userRepositories.CreateUserToDatabase(user);
+        }
+
+        public async Task<bool> FindUserExists(string email)
+        {
+            return await userRepositories.FindUserByEmail(email);
         }
     }
 }

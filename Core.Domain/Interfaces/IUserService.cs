@@ -10,5 +10,6 @@ namespace FinanceManager.Domain.Interfaces
     public interface IUserService
     {
         Task<User?> CreateUserService(User user);
+        Task<bool> FindUserExists(string email);
     }
 }
