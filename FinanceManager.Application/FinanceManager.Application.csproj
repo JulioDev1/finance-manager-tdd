@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Core.Domain\FinanceManager.Domain.csproj" />
     <ProjectReference Include="..\FinanceManager.Infrastructure\FinanceManager.Infrastructure.csproj" />
   </ItemGroup>

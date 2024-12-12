@@ -2,6 +2,7 @@
 using FinanceManager.Application.Services;
 using FinanceManager.Domain.Model;
 using FinanceManager.Infrastructure.Repositories.@interface;
+using static BCrypt.Net.BCrypt;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace financeManager.Tests.Services
         public async Task ShouldBeReturnErrorExistsEmail()
         {
             var InputUserRegister = fixture.Create<User>();
+
+            InputUserRegister.Password = HashPassword(InputUserRegister.Password, 10);
 
             repository.Setup(r => r.FindUserByEmail(InputUserRegister.Email)).ReturnsAsync(true);
 

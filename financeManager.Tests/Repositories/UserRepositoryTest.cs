@@ -58,5 +58,19 @@ namespace FinanceManager.Tests.Repositories
 
             Assert.False(isNotMatch);
         }
+
+        [Fact]
+        public async Task FindUserInDatabaseAndReturnYourEmail()
+        {
+            var userCreated = fixture.Create<User>();
+
+            context.Users.Add(userCreated);
+
+            await context.SaveChangesAsync();
+
+            var foundEmail = await context.Users.FirstOrDefaultAsync<User>(u=> u.Email == userCreated.Email);
+
+            Assert.Equal(userCreated.Email, foundEmail.Email);
+        }
     };
 }
