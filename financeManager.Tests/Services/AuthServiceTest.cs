@@ -53,6 +53,19 @@ namespace FinanceManager.Tests.Services
 
             Assert.False(result);
         }
+        [Fact]
+        public void ShouldBeReturnSuccesPassword()
+        {
+            var userWithPasswordCorrect = "correct password";
+
+            var correctToComparePassword = "correct password";
+
+            passwordHashed.Setup(u => u.Compare(userWithPasswordCorrect, correctToComparePassword)).Returns(true);
+
+            bool result = passwordHashed.Object.Compare(userWithPasswordCorrect, correctToComparePassword);
+
+            Assert.True(result);
+        }
 
     }
 }
