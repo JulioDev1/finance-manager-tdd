@@ -3,24 +3,29 @@ using FinanceManager.Application.Services;
 using FinanceManager.Domain.Model;
 using FinanceManager.Infrastructure.Repositories.@interface;
 using Moq;
+using static BCrypt.Net.BCrypt;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinanceManager.Domain.Interfaces;
 
 namespace FinanceManager.Tests.Services
 {
     public class AuthServiceTest
     {
         private readonly Mock<IUserRepositories> repository;
+        private readonly Mock<IPasswordHasher> passwordHashed;
         private readonly Fixture fixture;
 
         public AuthServiceTest()
         {
             this.repository = new Mock<IUserRepositories>();
             this.fixture = new Fixture();
+            this.passwordHashed = new Mock<IPasswordHasher>();
         }
+        [Fact]
         public async Task ShouldBeReturnInvalidEmailInDatabase()
         {
             var InputNotExistEmail = fixture.Create<Login>();
@@ -29,10 +34,24 @@ namespace FinanceManager.Tests.Services
 
             var authService = new AuthService(repository.Object);
 
-            var errorEmailIsNotFound = Assert.ThrowsAsync <Exception>(async () =>
+            var errorEmailIsNotFound = await Assert.ThrowsAsync <Exception>(async () =>
             {
-                throw new Exception("something is wrong");
+                await authService.GenerateAuthToken(InputNotExistEmail);
             });
+            Assert.Equal("something is wrong", errorEmailIsNotFound.Message);
+        }
+        [Fact]
+        public void ShouldBeReturnErrorPassword()
+        {
+            var userWithPasswordIncorrectly = "another password";
+            
+            var userModelWithIncorrectlyPassword = "incorrectly password";
+
+            passwordHashed.Setup(u => u.Compare(userWithPasswordIncorrectly, userModelWithIncorrectlyPassword));
+
+            bool result = passwordHashed.Object.Compare(userWithPasswordIncorrectly, userModelWithIncorrectlyPassword);
+
+            Assert.False(result);
         }
 
     }
