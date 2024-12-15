@@ -1,5 +1,6 @@
 
 
+using FinanceManager.Application.helpers;
 using FinanceManager.Application.Services;
 using FinanceManager.Domain.Interfaces;
 using FinanceManager.Infrastructure.Database;
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 builder.Services.AddScoped<IUserRepositories, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

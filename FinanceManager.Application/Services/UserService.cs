@@ -1,4 +1,5 @@
-﻿using FinanceManager.Domain.Interfaces;
+﻿using FinanceManager.Application.helpers;
+using FinanceManager.Domain.Interfaces;
 using FinanceManager.Domain.Model;
 using FinanceManager.Infrastructure.Repositories.@interface;
 using System;
@@ -12,10 +13,13 @@ namespace FinanceManager.Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepositories userRepositories;
+        private readonly IPasswordHasher passwordHasher;
+
 
         public UserService(IUserRepositories userRepositories)
         {
             this.userRepositories = userRepositories;
+            this.passwordHasher = new PasswordHasher();
         }
 
         public async Task<User?> CreateUserService(User user)
@@ -26,6 +30,7 @@ namespace FinanceManager.Application.Services
             {
                 throw new Exception("email already used");
             }
+            user.Password = passwordHasher.Hash(user.Password);
 
             return await userRepositories.CreateUserToDatabase(user);
         }
