@@ -72,5 +72,6 @@ namespace FinanceManager.Tests.Repositories
 
             Assert.Equal(userCreated.Email, foundEmail.Email);
         }
+
     };
 }

@@ -8,6 +8,6 @@ namespace FinanceManager.Application.helpers
 {
     public class AuthSetting
     {
-        public string PrivateKey { get; init; } = "949f398e-540b-49b0-a6d0-6c968514b8af";
+        public static string PrivateKey { get; set; } = "949f398e-540b-49b0-a6d0-6c968514b8af";
     }
 }

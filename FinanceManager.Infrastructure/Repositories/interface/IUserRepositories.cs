@@ -11,5 +11,6 @@ namespace FinanceManager.Infrastructure.Repositories.@interface
     {
         Task<User?> CreateUserToDatabase(User user);
         Task<bool> FindUserByEmail(string email);
+        Task <User?> GetUserByEmail(string email);
     }
 }

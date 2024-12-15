@@ -9,6 +9,8 @@ namespace FinanceManager.Domain.Interfaces
 {
     public interface IAuthService
     {
-        Task<string> GenerateAuthToken(Login login);
+        Task<User?> AuthenticateUser(Login login);
+        string GenerateAuthToken(User user);
+
     }
 }
