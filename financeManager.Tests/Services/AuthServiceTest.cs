@@ -32,11 +32,11 @@ namespace FinanceManager.Tests.Services
 
             repository.Setup(i => i.GetUserByEmail(InputNotExistEmail.Email)).ReturnsAsync((User?) null);
 
-            var authService = new AuthService(repository.Object);
+            var authService = new AuthService(repository.Object, passwordHashed.Object);
 
             var errorEmailIsNotFound = await Assert.ThrowsAsync <Exception>(async () =>
             {
-                await authService.GenerateAuthToken(InputNotExistEmail);
+                await authService.AuthenticateUser(InputNotExistEmail);
             });
             Assert.Equal("something is wrong", errorEmailIsNotFound.Message);
         }
@@ -67,5 +67,28 @@ namespace FinanceManager.Tests.Services
             Assert.True(result);
         }
 
+        [Fact]
+        public async Task shoulBeReturnSuccessInCaseUserLoggedSuccess()
+        {
+            var login = fixture.Create<Login>();
+
+            var user = fixture.Build<User>()
+                    .With(e=> e.Email , login.Email)
+                    .With(p=> p.Password , login.Password)
+                    .Create();
+
+            var authService = new AuthService(repository.Object, passwordHashed.Object);
+            
+            repository.Setup(r => r.GetUserByEmail(login.Email))
+                .ReturnsAsync(user);
+
+            passwordHashed.Setup(p => p.Compare(login.Password, user.Password))
+                .Returns(false);
+
+            var resultSuccess = await authService.AuthenticateUser(login);
+
+            Assert.NotNull(resultSuccess);
+            Assert.Equal(user.Email, resultSuccess!.Email);
+        }
     }
 }
