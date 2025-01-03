@@ -64,8 +64,6 @@ namespace FinanceManager.Tests.Controller
 
             var successControllerUser = await userController.RegisterUser(inputUserRegister);
 
-            Console.WriteLine(successControllerUser);
-
             var okResult = Assert.IsType<OkObjectResult>(successControllerUser.Result);
         }
     }

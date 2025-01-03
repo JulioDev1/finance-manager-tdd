@@ -30,7 +30,7 @@ namespace FinanceManager.Application.Services
             {
                 throw new Exception("email already used");
             }
-            user.Password = passwordHasher.Hash(user.Password);
+            user.Password = passwordHasher.Hash(user.Password);  
 
             return await userRepositories.CreateUserToDatabase(user);
         }
