@@ -37,5 +37,10 @@ namespace FinanceManager.Infrastructure.Repositories
         {
             return await context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await context.Users.FirstAsync(u => u.Id == id);
+        }
     }
 }

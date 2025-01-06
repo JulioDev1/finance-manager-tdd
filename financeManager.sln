@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceManager.Tests", "financeManager.Tests\FinanceManager.Tests.csproj", "{2EC38CB5-945A-4FB0-8636-B7D6907A7EF5}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceManager.Infrastructure", "FinanceManager.Infrastructure\FinanceManager.Infrastructure.csproj", "{7B93F42C-3BED-4D53-9BBC-E42F417C47EA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceManager.API", "FinanceManager.API\FinanceManager.API.csproj", "{984B47B9-EFF4-419D-88DA-3357F8112BB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SHARED", "SHARED", "{C1C0BD09-EE42-4967-91DE-374FDA1DB4EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceManager.Shared", "FinanceManager.Shared\FinanceManager.Shared.csproj", "{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{984B47B9-EFF4-419D-88DA-3357F8112BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{984B47B9-EFF4-419D-88DA-3357F8112BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{984B47B9-EFF4-419D-88DA-3357F8112BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +62,6 @@ Global
 		{6CC7D263-9477-4A82-964F-86765F076CC7} = {9FFAAED2-AA0D-41FF-8430-426F3D4826E7}
 		{7B93F42C-3BED-4D53-9BBC-E42F417C47EA} = {AE25A6F9-1B26-4A8C-A84E-85B754413ABE}
 		{984B47B9-EFF4-419D-88DA-3357F8112BB9} = {52FBF5EC-0DAC-4D69-BCFC-C2EFC3518A27}
+		{E296A31D-EE45-4A8B-BAD3-6776A1EA65FA} = {C1C0BD09-EE42-4967-91DE-374FDA1DB4EE}
 	EndGlobalSection
 EndGlobal

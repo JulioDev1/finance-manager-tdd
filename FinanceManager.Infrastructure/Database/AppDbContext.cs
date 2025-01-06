@@ -23,7 +23,5 @@ namespace FinanceManager.Infrastructure.Database
             .HasForeignKey("userId")
             .IsRequired();
         }
-
-
     }
 }
